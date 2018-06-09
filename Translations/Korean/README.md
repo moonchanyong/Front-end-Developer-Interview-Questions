@@ -1,6 +1,7 @@
 # 프론트엔드 면접 문제 은행
 
 이 파일에는 잠재적인 프론트엔드 개발자 후보를 선정할 때 사용할 수 있는 여러 가지 면접 질문들이 있습니다. 후보자에게 모든 문제를 사용하는 것은 많은 시간이 소요되기 때문에 추천하지 않습니다. 대신, 여러분이 요구하는 주요 기술과 관련된 질문들을 몇 가지 선정해서 사용해보세요.
+// 흑흑 개발자님이 이거 보고 질문하길..
 
 **참고:** 여기 있는 많은 질문은 자유롭게 추가/수정/삭제될 수 있고 정답보다 그 사람의 능력에 관해 이야기하는 흥미로는 토론을 끌어낼 수 있다는 것을 기억하세요.
 
@@ -23,7 +24,123 @@
 #### 일반적인 질문:
 
 * 어제/이번 주에 무엇을 공부하셨나요?
+  + 개인공부 + 면접 공부 + 학교 시험공부하느라 죽음의 주를 보냇습니다. (오늘날자는 6/9)
+
 * 코딩을 할 때 당신을 들뜨게 하거나 흥미를 끄는 것들은 무엇은 가요?
+  + 공부하고 있는것을 실제 코드에 적용하였을때, 저번 해커톤에서는 이벤트위임이라는 패턴을 몇일 전에 봤는데 마침 써야해서 사용하였는데 그게 너무 재밌었다.
+  + 그리고 해커톤에서 집에 돌아오면서 airbnb es6코딩스타일을 보면서 집에왔는데 실제로 써보기위해 크롬익스텐션 웹툰 크롤러를 만들어봤는데 코드가 깔끔해지는것을 느꼇다.
+  + 헤헤 그리고 RORO라고 알고는 있었는데 destructing문법을 사용해서 해보니까 잘 맞는거 같다.
+  + 세상에 .. 맞네.. es6부터 강력한 패턴이란걸 깨닫는 사람이 있네용
+  + RORO 패턴의 장점에 대해 더써보자 [출처는 이곳](https://taegon.kim/archives/8058)
+    - 명명된 인수(Named parameter), JS는 명명된 인수를 지원하지않는다(파이썬은 지원햇다. karg) 그래서 이렇게 명명인수를 사용하다면 더 깔끔하게 넣을 수 있다.
+    ```javascript
+    // not RORO
+    function notRORO(a, b, c) {
+      // dosomething
+    };
+
+    // 인자가 무엇인지 명확하게 보이지 않는다.
+    notRORO(1, 2, 3);
+
+    // RORO pattern
+    function doRORO({
+      a,
+      b,
+      c,
+    }) {
+      //dosomething
+    }
+
+    // 인지로 무엇을 넣는지 명확하게 보이고  순서에 얽매이지 않는다.
+    doRORO({
+      a: 1,
+      b: 2,
+      c: 3,
+    });
+
+    // 만약 명명된 이름이 아닌 다른 이름으로 함수내에서 사용하고싶다면.. (내생각과는 조금 달라서 기록해두어야 할 듟 하다.)
+    // 파라미터가 앞에오고 뒤에 값에 할당
+    function doRORO({
+      a,
+      b: bb,
+      c: cc,
+    }) {
+      //dosomething
+      console.log(bb, cc); // 2,3
+      console.log(b, c); // undefined, undefined
+    }
+
+    doRORO({
+      a: 1,
+      b: 2,
+      c: 3,
+    });
+
+    ```
+    - 더 명료한 인수 기본값
+    ```javascript
+
+    function notDefault({
+      a,
+      b: bb,
+      c: cc,
+    }) {
+      //dosomething
+      console.log(bb, cc); // 2,3
+      console.log(b, c); // undefined, undefined
+    }
+
+    notDefault(); // cannot desctructure.. 문제  왜냐하면 아무 객체도 안들어갔기 때문
+
+    function beDefault({
+      a,
+      b: bb = 100,
+      c: cc = 200,
+    } = {} ) {
+      //dosomething
+      console.log(bb, cc);
+    }
+
+    beDefault({a: 3}); //100,200
+
+    ```
+    - 더 많은 정보 반환
+    ```javascript
+    //심지어 리턴이 객체이므로 간단하게 정보를 반환 받고 많은 정보를 받을 수 있다.
+    let {a, b, c} = doRORO({a:1, b:2, c:3});
+    ```
+    - 함수 합성의 용이함 (compose) 이부분은 좌표를 참고하자
+    - 추가로 ..
+    ``` JavaScript
+    // 여기서 파라미터에 b가 들어와있으면 getB가 실행되지않는다.. 이를이용해서 필수 입력값을 지정할 수 있다.
+    function requiredParam (param) {
+      const requiredParamError = new Error(
+        `Required parameter, "${param}" is missing.`
+      );
+
+      // preserve original stack trace
+      if (typeof Error.captureStackTrace === ‘function’) {
+        Error.captureStackTrace(
+          requiredParamError,
+          requiredParam
+        );
+      }
+      throw requiredParamError;
+    }
+    function beDefault({
+      a = requiredParam('a'),
+      b: bb = getB(),
+      c: cc = getC(),
+    } = {} ) {
+      //dosomething
+      console.log(bb, cc);
+    }
+
+    beDefault({a: 3}); //100,200
+
+    ```
+
+
 * 최근에 당신이 경험한 기술적인 문제는 무엇이고 그것을 어떻게 해결했나요?
 * 웹 애플리케이션이나 사이트를 만들 때 고려해야 할 UI, Security, Performance, SEO, Maintainability에 대해서 설명해주세요.
 * 선호하는 개발 환경에 대해 자유롭게 이야기해 주세요.

@@ -3,21 +3,27 @@
 이 문서는 정답을 알려주는 문서가 아닙니다.
 면접에 대한 답은 스스로가 찾아야 좋으며,
 그 판단을 돕기 위한 해설서 임을 밝히는 바입니다.
-``` 
+```
 
 ##기여자
 @Songhun(http://songhun.blogspot.com)
 @YiHanghee(http://blog.javarouka.me)
 
 ##일반적인 질문에 대한 참고
-* SNS에 대해서 물어보는 이유가 무엇일까요?
+* SNS에 대해서 물어보는 이유가 무엇일까요??
+  + 소통을 할 줄 아는 사람인가
+  + sns의 기능 적인 부분을 체험해봐서 흐름을 알 수 있어서?
+  + sns의 커뮤니티를 통해 프론트엔드적 지식을 얻을 수 있어서?
 
 ##HTML에 대한 참고
 * `doctype`에 대한 설명은 [Wikipedia](http://ko.wikipedia.org/wiki/%EB%AC%B8%EC%84%9C_%ED%98%95%EC%8B%9D_%EC%84%A0%EC%96%B8) 에서 찾아볼 수 있습니다.
 	* 문서 타입에 대한 자세한 설명을 담은 블로그 ["Activating Browser Modes with Doctype"](http://hsivonen.iki.fi/doctype/)
+  * 어떤 SGML이나 XML 기반 문서 내에 그 문서가 특정 문서 형식 정의(DTD)를 따름을 지정하는 것이다.
+  * html문서의 경우 doctype이 없으면 쿼크모드(퀀스모드, 브라우저의 하위 호환성을 지키기위해 w3c나 ief의 표준을 엄격하게 지키지 않는 모드, 표준을 엄격하게 지키지 않으므로 웹브라우저별로 웹페이지가 다를 수 있다.)
+
 * 표준 모드는 W3C의 표준에 맞춘 구현 렌더링으로 동작하며(미세하게 다릅니다), 쿽스 모드는 다양한 브라우저 및 표준 정립 이전의 구버전 기준으로 작성된 HTML의 fallback 과 비슷합니다.
 	* [Quirks Mode 렌더링과 DTD.](http://naradesign.net/wp/2007/03/27/118/)
-	* [Mozilla's Quirks Mode](https://developer.mozilla.org/ko/Mozilla's_Quirks_Mode)	
+	* [Mozilla's Quirks Mode](https://developer.mozilla.org/ko/Mozilla's_Quirks_Mode)
 * [XHTML 과 HTML의 차이](http://blog.wystan.net/2007/05/24/xhtml-vs-html) 블로그 포스팅에 4부작(?)으로 좋은 설명이 있네요.
 	* application/xhtml+xml 컨텐트 타입은 브라우저에 따라 해석할 수 없기도 합니다.(IE...)
 * 엘리먼트의(특히 루트인 html) lang attribute 와 관련이 있을까요...?
